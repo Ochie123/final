@@ -19,7 +19,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from .models import Product
 
 #Reordering modules and their contents
-from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
+
 # Create your views here.
 class CarouselView(TemplateView):
     template_name = 'other/carousel.html'
@@ -124,17 +124,7 @@ class SubcategoryContentListView(TemplateResponseMixin, View):
         
         return self.render_to_response({'subcategory': subcategory})
 #This is the ModuleOrderView view.
-class SubcategoryOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View): 
-    def post(self, request):
-        for id, order in self.request_json.items(): 
-            Subcategory.objects.filter(id=id, product__owner=request.user).update(order=order) 
-        return self.render_json_response({'saved': 'OK'})
 
-#view to order a module's contents.
-class ContentOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View): 
-    def post(self, request):
-        for id, order in self.request_json.items(): Content.objects.filter(id=id, subcategory__product__owner=request.user).update(order=order)
-        return self.render_json_response({'saved': 'OK'})
 
 class ProductListView(TemplateResponseMixin, View):
     model = Product
