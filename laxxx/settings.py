@@ -25,7 +25,7 @@ SECRET_KEY = '3avfq=tnm_+z=7)d7*cx(5ed=v1&8jr7e&4$w+g5@u%wcnkp(s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','https://git.heroku.com/arcane-ocean-62327.git']
+ALLOWED_HOSTS = ['0.0.0.0','https://git.heroku.com/laxxxx.git']
 
 
 # Application definition
