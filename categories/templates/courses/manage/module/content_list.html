@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+{% load product %}
+{% block title %}
+Product {{ subcategory.order|add:1 }}: {{ subcategory.title }} 
+{% endblock %}
+{% block content %}
+{% with product=subcategory.product %}
+<h1>Product "{{ product.title }}"</h1> 
+<div class="contents">
+<h3>Subcategories</h3> 
+<ul id="subcategories">
+{% for s in product.subcategories.all %}
+<li data-id="{{ s.id }}" {% if s == subcategory %}
+class="selected"{% endif %}>
+<a href="{% url "subcategory_content_list" s.id %}">
+<span>
+Subcategory <span class="order">{{ s.order|add:1 }}</span>
+</span> <br>
+{{ s.title }}
+</a>
+</li>
+{% empty %}
+  <li>No subcategories yet.</li> 
+{% endfor %}
+</ul>
+<p><a href="{% url "product_subcategory_update" product.id %}"> Edit subcategories</a></p>
+</div>
+<div class="subcategory">
+<h2>Subcategory {{ subcategory.order|add:1 }}: {{ subcategory.title }}</h2>
+<h3>Subcategory contents:</h3> <div id="subcategory-contents">
+{% for content in subcategory.contents.all %} <div data-id="{{ content.id }}">
+{% with item=content.item %}
+<p>{{ item }} ({{ item|model_name }})</p>
+<a href="{% url "subcategory_content_update" subcategory.id item|model_name item.id %}">
+    Edit 
+</a>
+<form action="{% url "subcategory_content_delete" content.id
+method="post">
+<input type="submit" value="Delete"> {% csrf_token %}
+</form>
+{% endwith %}
+</div>
+{% empty %}
+<p>This subcategory has no contents yet.</p> {% endfor %}
+</div>
+<h3>Add new content:</h3> <ul class="content-types">
+<li><a href="{% url "subcategory_content_create" subcategory.id "text" %}">
+Text</a></li>
+<li><a href="{% url "subcategory_content_create" subcategory.id "image" %}">
+Image</a></li>
+<li><a href="{% url "subcategory_content_create" subcategory.id "video" %}">
+Video</a></li>
+<li><a href="{% url "subcategory_content_create" subcategory.id "file" %}">
+File</a></li> </ul>
+</div>
+{% endwith %} 
+
+{% endblock %}
+

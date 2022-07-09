@@ -1,0 +1,10 @@
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+        {% for c in categories %}
+            <a class="p-2 link-secondary badge-pill badge-warning" href="{% url "product_list_category" c.slug %}">
+              {{ c.title }}</a> 
+                 <br>{% endfor %}
+                 </a>
+          </nav>   
+  </div>
+  

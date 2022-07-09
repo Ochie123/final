@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %} 
+{% block content %}
+
+<body>
+  <style>
+
+
+body {
+
+  align-items: center;
+
+  background-color: #f5f5f5;
+}
+
+  </style>
+<div class="form-signin">
+<style>
+.login-forms {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+
+</style>
+
+</div>
+<div class="login-forms">
+<style>
+.login-forms {
+  display: flex;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+</style>  
+<form action="{% url 'login' %}" method="post">
+{{ form.as_p }}
+{% csrf_token %}
+<input type="hidden" name="next" value="{{ next }}"/> 
+<p><input type="submit" value="Log-in"></p>
+</form> </div>
+</div>
+</body>
+{% endblock %}

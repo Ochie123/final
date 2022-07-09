@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+{% block title %}
+Edit "{{ product.title }}" 
+{% endblock %}
+{% block content %}
+<h1>Edit "{{ product.title }}"</h1> 
+<div class="subcategory">
+<h2>Product subcategories</h2> 
+<form method="post">
+{{ formset }}
+{{ formset.management_form }} 
+{% csrf_token %}
+<input type="submit" value="Save subcategories"> 
+</form>
+</div>
+{% endblock %}

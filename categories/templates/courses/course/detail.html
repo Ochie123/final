@@ -1,0 +1,132 @@
+{% extends "base.html" %} 
+{% load static %}
+{% include "category.html" %}
+
+{% load static %}
+{% block title %}
+{{ object.title }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    {% with category=object.category %} <h1></h1>
+      <!-- product -->
+      <div class="product-content product-wrap clearfix product-deatil">
+          <div class="row">
+              <div class="col-md-5 col-sm-12 col-xs-12">
+                  <div class="product-image">
+                      <div id="myCarousel-2" class="carousel slide">
+                          <ol class="carousel-indicators">
+                              <li data-target="#myCarousel-2" data-slide-to="0" class=""></li>
+                              <li data-target="#myCarousel-2" data-slide-to="1" class="active"></li>
+                              <li data-target="#myCarousel-2" data-slide-to="2" class=""></li>
+                          </ol>
+                          <div class="carousel-inner">
+                              <!-- Slide 1 -->
+                              <div class="item active">
+                              
+
+                                <img class="card-img" src="{% if product.image %}{{ product.image.url }}{% else %}
+                                {% static "images/no_image.png" %}{% endif %}"  class="img-responsive">
+                              </div>
+                              <!-- Slide 2 -->
+                              <div class="item">
+                                <img src="{% if product.image2 %}{{ product.image2.url }}{% else %}
+                                {% static "images/no_image.png" %}{% endif %}">
+
+                              </div>
+                              <!-- Slide 3 -->
+                              <div class="item">
+                                <img src="{% if product.image3 %}{{ product.image3.url }}{% else %}
+                                {% static "images/no_image.png" %}{% endif %}">
+
+                              </div>
+                          </div>
+                          <a class="left carousel-control" href="#myCarousel-2" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+                          <a class="right carousel-control" href="#myCarousel-2" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+                      </div>
+                  </div>
+              </div>
+  
+              <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
+                  <h2 class="name">
+                      {{ object.title }}
+                      <br> </br>
+                      <small>Seller:<a href="javascript:void(0);">{{ object.owner.get_full_name }}</a></small>
+                      <i class="fa fa-star fa-2x text-primary"></i>
+                      <i class="fa fa-star fa-2x text-primary"></i>
+                      <i class="fa fa-star fa-2x text-primary"></i>
+                      <i class="fa fa-star fa-2x text-primary"></i>
+                      <i class="fa fa-star fa-2x text-muted"></i>
+
+                  </h2>
+                  <hr />
+                  <h3 class="price-container">
+                      Was: <del>Kes: {{ product.old_price }}</del> <br/>  Now: <span class="badge badge-danger">Kes: {{ product.price }}</span></h5>
+                      <small>*includes tax</small>
+                  </h3>
+                  <div class="certified">
+                      <ul>
+                          <li>
+                              <a href="javascript:void(0);">Delivery time<span>24 hours</span></a>
+                          </li>
+                          <li>
+                              <a href="javascript:void(0);">Brand<span>{{ product.brand }}</span></a>
+                          </li>
+                          <li>
+                              <a href="javascript:void(0);">Quantity<span>{{ product.quantity }}</span></a>
+                          </li>
+                          <li>
+                              <a href="javascript:void(0);">SKU<span>{{ product.sku }}</span></a>
+                          </li>
+                      </ul>
+                  </div>
+                  <hr />
+                  <div class="description description-tabs">
+                      <ul id="myTab" class="nav nav-pills">
+                          <li class="active"><a href="#more-information" data-toggle="tab" class="no-margin">Product description </a></li>
+                          <li class=""><a href="#specifications" data-toggle="tab">Specifications</a></li>
+                          <li class=""><a href="#specifications" data-toggle="tab">Order</a></li>
+                      </ul>
+                      <div id="myTabContent" class="tab-content">
+                          <div class="tab-pane fade active in" id="more-information">
+                              <br />
+                            
+                              <p>
+                                  <dd>
+                                    {{ object.overview }}
+                                  </dd>
+                                 
+                              </p>
+                          </div>
+                          <div class="tab-pane fade" id="specifications">
+                              <br />
+                              <dl class="">
+                                  
+                                  <dd>Please contact this number for delivery.</dd>
+                                  <dd><p>To order by telephone, <a href="tel:+254793683851">please call +254793683851</a></p></dd>
+                                  <dd>laxosuppliers.com</dd>
+                              </dl>
+                          </div>
+                          <div class="tab-pane fade" id="reviews">
+                          </div>
+                      </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                      <div class="col-sm-12 col-md-6 col-lg-6">
+                          <a href="tel:+254793683851" class="btn btn-success btn-lg">Contact Seller</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- end product -->
+  </div>
+
+<h1>
+    You may also like
+</h1>
+    
+
+{% endwith %} {% endblock %}

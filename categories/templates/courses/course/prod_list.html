@@ -1,0 +1,71 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+ <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-wrapper > div {
+  width: 100%;
+  max-width: 25%;
+  padding: 10px;
+ 
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-wrapper > div {
+    max-width: 50%;
+  }
+}
+@media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+    }
+.card {
+    size: 100, 100;
+}
+
+  </style>
+<div class="container">
+<div class="flex-wrapper">
+    {% for product in products %}
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+            <a class="card-product_item" href="{% url "product_detail" product.slug %}">
+                <div class="body">
+                    <div class="cp_img">
+                      <img src="{% if product.image %}{{ product.image.url }}{% else %}
+                      {% static "images/no_image.png" %}{% endif %}">
+                    </div>
+                    <div class="product_details">
+                        <h5> <a href="{% url "product_detail" product.slug %}"> {{ product.title }}</a> </h5>
+                        <ul class="product_price list-unstyled">
+                            <li class="old_price">Was: <del>Kes: {{ product.old_price }}</del></li>
+                            <li class="new_price">Now: <span class="badge badge-danger">Kes: {{ product.price }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+      </div>
+      {% endfor %}
+</div>
+</div>
+
+{% endblock %}

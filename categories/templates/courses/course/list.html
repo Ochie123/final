@@ -1,0 +1,132 @@
+{% extends "base.html" %} 
+{%load static %}
+{% block title %}
+{% if category %}
+{{ category.title }} products 
+{% else %}
+All products 
+{% endif %}
+{% endblock %}
+
+{% block content %}
+  <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-wrapper > div {
+  width: 100%;
+  max-width: 25%;
+  padding: 10px;
+ 
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-wrapper > div {
+    max-width: 50%;
+  }
+}
+@media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+    }
+
+  </style>
+
+
+
+
+<h1>
+Shop more for less
+</h1>
+
+
+{% include "courses/course/prod_list.html" %}
+<h1>Latest Offers</h1>
+<main class="container">
+    <!-- Section START -->
+    <section class="pt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Title -->
+            <div class="mb-4 d-md-flex justify-content-between align-items-center">
+              <h2 class="m-0"><i class="bi bi-megaphone"></i> </h2>
+
+            </div>
+            <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
+              <div class="tiny-slider-inner"
+                data-autoplay="true"
+                data-hoverpause="true"
+                data-gutter="24"
+                data-arrow="true"
+                data-dots="false"
+                data-items-xl="4" 
+                data-items-md="3" 
+                data-items-sm="2" 
+                data-items-xs="1">
+    
+                <!-- Card item START -->
+                {% for product in products %}
+                {% with category=product.category %} 
+                <div class="card">
+                  <!-- Card img -->
+                  <div class="position-relative">
+                    <a class="card-product_item" href="{% url "product_detail" product.slug %}">
+
+                    <img class="card-img" src="{% if product.image %}{{ product.image.url }}{% else %}
+                    {% static "images/no_image.png" %}{% endif %}">
+
+                    <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                      <!-- Card overlay Top -->
+                      <div class="w-100 mb-auto d-flex justify-content-end">
+                      </div>
+                      <!-- Card overlay bottom -->
+                      <div class="w-100 mt-auto">            
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card-body px-0 pt-3">
+                    <div class="text-center">
+                      <h4 class="h5 mb-2"> 
+                          <a href="{% url "product_detail" product.slug %}"> 
+                              {{ product.title }}
+                          </a> 
+                          </h3>
+                      <h5 class="mb-0 text-primary"> 
+                          Was: <del>Ksh {{ product.old_price }}</del> <br />
+                          <br>
+                          Now: Kes: {{ product.price }}</h5>
+                  </div>
+                    <!-- Card info -->
+                      </a>
+                  </div>
+                </div>
+                <!-- Card item END -->
+                {% endwith %} 
+                {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+{% endblock %}

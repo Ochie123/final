@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+  <title>{% block title %}Laxi{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <meta name='viewport', content='width=device-width, initial-scale=1.0'>
+  <link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  rel="stylesheet"
+     integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
+      crossorigin="anonymous">
+  <script
+      src="https://code.jquery.com/jquery-2.2.2.min.js" 
+      integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" 
+      crossorigin="anonymous"></script>
+  
+  <script 
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+      integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
+      crossorigin="anonymous"></script>
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  <link href="{% static 'css/prod-list.css' %}" rel="stylesheet">
+  <link href="{% static 'css/product-detail.css' %}" rel="stylesheet">
+  <link href="{% static 'css/product.css' %}" rel="stylesheet">
+  <link href="{% static 'css/styl.css' %}" rel="stylesheet">
+  <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+  <link href="{% static 'css/slider.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/footer.css' %}" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light"> <div class="col-4 text-center">
+    <a href="/" class="logo">Laxo</a>
+  </div>
+  <form class="navbar-form navbar-left navbar-search-form" role="search">                  
+    <div class="form-group">
+         <input type="text" value="" class="form-control" placeholder="Search...">
+    </div> 
+ </form>
+
+    <span class="icon shopping bag"></span>
+    <span class="number"></span>
+ 
+</div>
+<button class="cart__button" type="button">
+  <span class="material-icons">
+    shopping_cart
+    </span>
+</button>
+    <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse" data-target="#navbarSupportedContent"> 
+    <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+      class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+    <div class="row flex-nowrap justify-content-between align-items-center">
+   
+        <a href="javascript:void(0);" data-toggle="search" class="hidden-xs"><i class="fa fa-search"></i></a>
+    </li>
+        <a class="btn btn-sm btn-outline-primary">
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url "logout" %}">Sign out</a></li>
+      {% else %}
+        <li><a href="{% url "login" %}">Sign in</a></li>
+      {% endif %}
+          </a>
+        </div>
+      </div>
+  
+      <a href="javascript:void(0);" data-toggle="search" class="hidden-xs"><i class="fa fa-search"></i></a>
+  </li>
+</div>
+</ul>
+     <!-- Collect the nav links, forms, and other content for toggling -->    
+   </nav>
+{% include "category.html" %}
+
+  
+
+   {% block content %}
+   
+   {% endblock %}
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      {% block domready %}
+      {% endblock %}
+    });
+  </script>
+</body>
+
+<div class="footer">
+  <style>
+      .footer {
+          background-color: rgb(243, 232, 232);
+      }
+  </style>
+  <div class="bg-dark-overlay-3 mt-5">
+      <div class="container">
+          <div class="row align-items-center justify-content-md-between py-4">
+              <div class="col-md-6">
+                  <!-- Copyright -->
+                  <div class="text-center text-md-start text-primary-hover text-muted">
+              <!-- Footer copyright END -->
+      <ul class="nav text-primary-hover text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
+        <li class="nav-item"><a class="nav-link">Sign in as</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/accounts/login/?next=/product/mine/">Seller</a></li>
+    
+       
+      </ul>
+                  </div>
+              </div>
+              <div class="row flex-nowrap justify-content-between align-items-center">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+
+@ {% now "Y" %} Laxo Suppliers Company, Inc</p></a>
+  </footer>
+</div>
+  <script src="{% static "js/jquery.min.js" %}"></script> 
+<script src="{% static "js/popper.min.js" %}"></script> 
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+
+<script src="{% static "javascripts/vendor/tiny-slider.js" %}></script>
+<script src="{% static "javascripts/vendor/sticky.min.js" %}></script>
+
+
+<!-- Bootstrap JS -->
+<script src="{% static "javascripts/vendor/bootstrap.bundle.min.js" %}></script>
+
+<!-- Template Functions -->
+<script src="{% static "javascripts/function.js" %}></script>
+
+<!-- Basehhh-->
+<script src="{% static "javascripts/vendor/bootstrap.bundle.min.js" %}"></script>
+<script src="{% static '/assets/js/bootstrap.min.js' %}" rel="stylesheet"></script>
+
+<!-- Vendors -->
+<script src="{% static "javascripts/vendor/tiny-slider.js" %}"></script>
+<script src="{% static "javascripts/vendor/sticky.min.js" %}"></script>
+
+<script src="{% static "js/jquery.min.js" %}"></script> 
+<script src="{% static "javascripts/function.js" %}"></script>
+
+<!-- Template Functions -->
+<script src="{% static "javascripts/function.j" %}"></script>
+</html>

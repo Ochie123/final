@@ -1,0 +1,48 @@
+{%load static %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+    {% clear_breadcrumbs %}
+    {% breadcrumb "Home" "product/category/" %}
+    {% breadcrumb "All products" "product_list" %}
+{% endblock %}
+
+
+<style>
+
+</style>
+{% block content %}
+{% render_breadcrumbs %}
+<section>
+    <div class="container">
+        <div class="flex-wrapper">  
+            {% for product in products %}
+            {% with category=product.category %}         
+            <div class="col-sm-6 col-lg-3 mb-2-6 mb-lg-0">
+                
+                <div class="card-wrapper mb-4">
+                    <div class="card-img"><img src="https://via.placeholder.com/200x200/7B68EE/000000" alt="..."></div>
+                
+                <div class="text-center">
+                    <h4 class="h5 mb-2"> 
+                        <a href="{% url "product_detail" product.slug %}"> 
+                            {{ product.title }}
+                        </a> 
+                        </h3>
+                    <h5 class="mb-0 text-primary"> 
+                        Was: <del>$ {{ product.old_price }}</del> <br />
+                        <br>
+                        Now: <span class="badge badge-danger">${{ product.price }}</span></h5>
+                </div>
+            </div>
+            {% endwith %} 
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

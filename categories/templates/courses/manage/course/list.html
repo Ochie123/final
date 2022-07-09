@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}My products{% endblock %} 
+{% block content %}
+<h1>My products</h1> 
+<div class="subcategds">
+{% for product in object_list %} 
+<div class="product-info">
+  <h3>{{ product.title }}</h3> 
+  <p>
+<a href="{% url "product_edit" product.id %}">Edit</a>
+<a href="{% url "product_delete" product.id %}">Delete</a>
+<a href="{% url "product_subcategory_update" product.id %}">Edit subcategories</a> 
+{% if product.subcategories.count > 0 %}
+<a href="{% url "subcategory_content_list" product.subcategories.first.id %}">
+  Manage contents</a>
+{% endif %}
+</p>
+
+</div>
+{% empty %}
+<p>You haven't added any products yet.</p> 
+{% endfor %}
+<p>
+<a href="{% url "product_create" %}" class="button">Add new product</a>
+</p> 
+
+</div>
+
+{% endblock %}
