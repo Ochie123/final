@@ -77,9 +77,10 @@ WSGI_APPLICATION = 'laxxx.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-        'NAME': 'laxxx',
-        'HOST': '127.0.0.1',
-    
+        'NAME': 'd1bpe4td7ug9sk',
+        'USER': 'zaoxrhbpvuxdyy',
+        'PASSWORD': 'c7a0237cb84653b88fc5c50cb3a36d1047cdb55dd4cc5def0b9d25ebc85bcaa5', 
+        'HOST': 'ec2-52-71-23-11.compute-1.amazonaws.com',
         'PORT': '5432',
         #username:macbookair
         #pass:li3642ax
