@@ -6,5 +6,6 @@ django-braces==1.14.0
 django-heroku==0.3.1
 psycopg2==2.9.3
 six==1.16.0
+Pillow==9.2.0
 sqlparse==0.4.2
 whitenoise==6.2.0
