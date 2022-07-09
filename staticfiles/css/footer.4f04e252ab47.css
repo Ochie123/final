@@ -1,0 +1,17 @@
+.footer {
+    text-align: center;
+    height: 200px;
+    line-height: 200px;
+    width: 100%;
+    }
+.footer-bottom {
+    height: 50px;
+    text-align: center; 
+    line-height: 50px; 
+    font-size: 0.9em; 
+    background-color: #ed1414; 
+    color: rgb(24, 3, 3);
+}
+.footer-bottom-a {
+    color: #aaa;
+    } 

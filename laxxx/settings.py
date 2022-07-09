@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +25,7 @@ SECRET_KEY = '3avfq=tnm_+z=7)d7*cx(5ed=v1&8jr7e&4$w+g5@u%wcnkp(s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','https://git.heroku.com/laxxxx.git']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -75,15 +75,9 @@ WSGI_APPLICATION = 'laxxx.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-        'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-        'NAME': 'd1bpe4td7ug9sk',
-        'USER': 'zaoxrhbpvuxdyy',
-        'PASSWORD': 'c7a0237cb84653b88fc5c50cb3a36d1047cdb55dd4cc5def0b9d25ebc85bcaa5', 
-        'HOST': 'ec2-52-71-23-11.compute-1.amazonaws.com',
-        'PORT': '5432',
-        #username:macbookair
-        #pass:li3642ax
+        "default": {
+        "ENGINE" : "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3")
     }
 }
 
@@ -127,8 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-import django_heroku
 django_heroku.settings(locals())
