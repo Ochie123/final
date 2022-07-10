@@ -1,8 +1,16 @@
 asgiref==3.5.2
+certifi==2021.10.8
+distlib==0.3.4
 dj-database-url==0.5.0
 Django==4.0.6
-gunicorn==20.1.0
+django-heroku==0.3.1
+filelock @ file:///private/tmp/pipenv--filelock-20220422-86659-vosekm/filelock-3.6.0
 Pillow==9.2.0
+pipenv @ file:///private/tmp/pipenv-20220422-86659-1othdrn/pipenv-2022.4.21
+platformdirs @ file:///private/tmp/pipenv--platformdirs-20220422-86659-dp8w99/platformdirs-2.5.2
 psycopg2==2.9.3
+six==1.16.0
 sqlparse==0.4.2
+virtualenv @ file:///private/tmp/pipenv--virtualenv-20220422-86659-1n8pu4l/virtualenv-20.14.1
+virtualenv-clone==0.5.7
 whitenoise==6.2.0
