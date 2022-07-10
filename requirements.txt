@@ -199,7 +199,6 @@ patsy==0.5.1
 pep8==1.7.1
 pexpect @ file:///tmp/build/80754af9/pexpect_1605563209008/work
 pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
-Pillow==6.2.2
 pipfile==0.0.2
 pkginfo==1.7.0
 platformdirs==2.4.1
