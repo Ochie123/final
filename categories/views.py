@@ -148,6 +148,6 @@ class ProductDetailView(DetailView):
     template_name = 'courses/course/detail.html' 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['enroll_form'] = ProductEnrollForm( initial={'product':self.object})
+        
         return context
 
