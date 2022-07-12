@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '3avfq=tnm_+z=7)d7*cx(5ed=v1&8j
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-ALLOWED_HOSTS = ['https://laxxx.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['https://laxxx.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -76,13 +76,16 @@ WSGI_APPLICATION = 'laxxx.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-        "default": {
-        "ENGINE" : "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3")
+        'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+        'NAME': 'laxoss',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
+
 }
 #username: macbookair
-#password: laxxx123
+#password: laxxxos123
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
